@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-ionic-starter": {
+    "my-chat-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-ionic-starter",
+            "outputPath": "dist/my-chat-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -111,10 +111,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-ionic-starter:build:production"
+              "browserTarget": "my-chat-app:build:production"
             },
             "development": {
-              "browserTarget": "angular-ionic-starter:build:development"
+              "browserTarget": "my-chat-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -122,7 +122,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-ionic-starter:build"
+            "browserTarget": "my-chat-app:build"
           }
         },
         "test": {
@@ -152,24 +152,24 @@
         "ionic-cordova-serve": {
           "builder": "@ionic/angular-toolkit:cordova-serve",
           "options": {
-            "cordovaBuildTarget": "angular-ionic-starter:ionic-cordova-build",
-            "devServerTarget": "angular-ionic-starter:serve"
+            "cordovaBuildTarget": "my-chat-app:ionic-cordova-build",
+            "devServerTarget": "my-chat-app:serve"
           },
           "configurations": {
             "production": {
-              "cordovaBuildTarget": "angular-ionic-starter:ionic-cordova-build:production",
-              "devServerTarget": "angular-ionic-starter:serve:production"
+              "cordovaBuildTarget": "my-chat-app:ionic-cordova-build:production",
+              "devServerTarget": "my-chat-app:serve:production"
             }
           }
         },
         "ionic-cordova-build": {
           "builder": "@ionic/angular-toolkit:cordova-build",
           "options": {
-            "browserTarget": "angular-ionic-starter:build"
+            "browserTarget": "my-chat-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-ionic-starter:build:production"
+              "browserTarget": "my-chat-app:build:production"
             }
           }
         }
@@ -188,5 +188,5 @@
       "styleext": "scss"
     }
   },
-  "defaultProject": "angular-ionic-starter"
+  "defaultProject": "my-chat-app"
 }
