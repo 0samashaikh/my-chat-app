@@ -109,6 +109,8 @@ export class HomePage implements OnInit {
       room: this.f['existingRoom']['value'],
       message: this.f['message']['value'],
     });
+    this.f['message'].setValue('');
+
   }
 
   login() {
