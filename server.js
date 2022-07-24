@@ -5,9 +5,9 @@ const app = express();
 let http = require('http');
 
 
-app.use(express.static(__dirname + '/dist/sample'));
+app.use(express.static(__dirname + '/dist/my-chat-app'));
 app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname + '/dist/sample/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/my-chat-app/index.html'));
 });
 
 let server = http.Server(app);

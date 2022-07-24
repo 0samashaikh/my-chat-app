@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { StorageService } from '../auth/storage.service';
 import { ChatService } from '../shared/services/chat.service';
 
@@ -24,14 +24,14 @@ export class HomePage implements OnInit {
   rooms: any[] = [];
   person: User[] = [];
 
-  userForm = new FormGroup({
-    userName: new FormControl('', [Validators.required]),
+  userForm = new UntypedFormGroup({
+    userName: new UntypedFormControl('', [Validators.required]),
   });
 
-  chatForm = new FormGroup({
-    newRoom: new FormControl('', [Validators.required]),
-    existingRoom: new FormControl('', [Validators.required]),
-    message: new FormControl(''),
+  chatForm = new UntypedFormGroup({
+    newRoom: new UntypedFormControl('', [Validators.required]),
+    existingRoom: new UntypedFormControl('', [Validators.required]),
+    message: new UntypedFormControl(''),
   });
 
   isUserActive: boolean = false;

@@ -10,7 +10,7 @@ export class ChatService {
   private socket: Socket;
   private url = 'http://localhost:3000';
   constructor() {
-    this.socket = io(this.url);
+    this.socket = io();
   }
 
   login(user: string) {
