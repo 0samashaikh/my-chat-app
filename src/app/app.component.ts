@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SpotifyService } from './shared/services/spotify.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +9,7 @@ import { SpotifyService } from './shared/services/spotify.service';
 })
 export class AppComponent {
   title = 'my-chat-app';
+ 
   constructor(private readonly spotify: SpotifyService) {}
 
   getAccessToken() {

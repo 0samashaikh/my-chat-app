@@ -27,4 +27,14 @@ export class SpotifyService {
     };
     return this.http.post(url, undefined, { headers: headers, params: params });
   }
+
+
+
+  // for more visit:
+
+  // docs- 
+  // https://developer.spotify.com/documentation/web-api/reference
+  // https://developer.spotify.com/documentation/general/guides/authorization/client-credentials/
+
+  // dashboard - https://developer.spotify.com/dashboard/applications/aacbc30e7608457fa554bf7b9bcfc9ab
 }

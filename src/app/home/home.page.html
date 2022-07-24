@@ -1,0 +1,115 @@
+<ion-content>
+  <ion-card *ngIf="!userName">
+    <ion-card-header>
+      <ion-card-title>
+        Enter Your Name
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="userForm">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <mat-form-field class="full-width">
+                <input placeholder="User Name" matInput formControlName="userName" />
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button color="primary" class="ion-float-right" fill="clear" (click)="createUser()"
+                [disabled]="userForm.invalid">Submit</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+
+  <form [formGroup]="chatForm" *ngIf="userName">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Create Room
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <mat-form-field class="full-width">
+                <input placeholder="Room Name" matInput formControlName="newRoom" />
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <mat-action-row>
+          <button mat-button color="primary" (click)="createRoom()"
+            [disabled]="chatForm.controls['newRoom'].invalid">Create Room</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+
+      <mat-expansion-panel *ngIf="rooms.length > 0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Enter Room
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="align">
+            <ion-col>
+              <mat-form-field class="full-width">
+                <mat-select formControlName="existingRoom" placeholder="Room">
+                  <mat-option *ngFor="let x of rooms" [value]="x">
+                    {{ x }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <mat-action-row>
+          <button mat-button color="primary" (click)="join()"
+            [disabled]="chatForm.controls['existingRoom'].invalid">Join</button>
+          <button mat-button color="warn" (click)="leave()" [disabled]="!isMessageBoxVisible">Leave</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <ion-card *ngIf="isMessageBoxVisible">
+      <ion-card-header>
+
+        <ion-card-title>Messages Box</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+
+            <ion-col style="height:25rem; overflow: auto;">
+
+              <ion-item *ngFor="let item of person">
+                <b>{{item.user}}</b> : {{item.message}}
+              </ion-item>
+
+            </ion-col>
+
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <mat-form-field class="full-width">
+                <input placeholder="Message" matInput formControlName="message" />
+                <button matSuffix color="primary" mat-button (click)="sendMessage()">Send</button>
+              </mat-form-field>
+            </ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </form>
+
+</ion-content>
