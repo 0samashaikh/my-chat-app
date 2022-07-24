@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { map, Observable } from 'rxjs';
 import { StorageService } from '../auth/storage.service';
 import { ChatService } from '../shared/services/chat.service';
 

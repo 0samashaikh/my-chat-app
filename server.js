@@ -1,15 +1,25 @@
-let express = require('express');
+const express = require('express');
+const path = require('path');
 
-let app = express();
-
+const app = express();
 let http = require('http');
+
+
+app.use(express.static(__dirname + '/dist/sample'));
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname + '/dist/sample/index.html'));
+});
+
 let server = http.Server(app);
+
+
 let io = require('socket.io')(server, { cors: { origin: "*" } });
 
-const port = process.env.PORT || '3000';
-server.listen(port, () => {
-    console.log("hello")
-});
+
+server.listen(process.env.PORT || 3000, () => {
+    console.log('server started');
+})
+
 let rooms = []
 
 io.on('connection', socket => {
@@ -47,4 +57,3 @@ io.on('connection', socket => {
         io.in(data.room).emit('new message', { user: data.user, message: data.message })
     })
 })
-

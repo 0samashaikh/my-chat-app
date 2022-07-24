@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
-import { Room, User } from 'src/app/home/home.page';
+import { Room, User } from '../../home/home.page';
 
 @Injectable({
   providedIn: 'root',
