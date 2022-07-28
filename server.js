@@ -24,8 +24,12 @@ let rooms = []
 
 io.on('connection', socket => {
 
+    socket.on('disconnect', (data)=>{
+        socket.leave(socket.room);
+        socket.broadcast.to(socket.room).emit('left room', { user: socket.user, message: 'has left this room.' })
+    })
+
     socket.on('login', () => {
-        console.log('login');
         socket.join('login')
         io.in('login').emit('created rooms', { rooms: rooms })
     })
@@ -39,6 +43,8 @@ io.on('connection', socket => {
 
     socket.on('join', (data) => {
         socket.join(data.room);
+        socket.user = data.user
+        socket.room = data.room
 
         console.log(data.user + ' joined the room ' + data.room);
 

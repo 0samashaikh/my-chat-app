@@ -10,11 +10,8 @@ import { environment } from '../../../environments/environment';
 })
 export class ChatService {
   private socket: Socket;
-  private url = 'http://localhost:3000';
   constructor() {
     this.socket = io(environment.server_url);
-    console.log(environment.server_url);
-    
   }
   
   login(user: string) {

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormControl,
+  Validators,
+} from '@angular/forms';
 import { StorageService } from '../auth/storage.service';
 import { ChatService } from '../shared/services/chat.service';
 
@@ -21,7 +25,7 @@ export class HomePage implements OnInit {
   isMessageBoxVisible: boolean = false;
   userName: string = '';
 
-  rooms: any[] = [];
+  rooms: any[] = ['', 'Room 1'];
   person: User[] = [];
 
   userForm = new UntypedFormGroup({
@@ -55,11 +59,11 @@ export class HomePage implements OnInit {
         this.person.push(res);
       },
     });
-    this.chatService.newRoomCreated().subscribe({
-      next: (res) => {
-        this.getRoomsOption(res.rooms);
-      },
-    });
+    // this.chatService.newRoomCreated().subscribe({
+    //   next: (res) => {
+    //     this.getRoomsOption(res.rooms);
+    //   },
+    // });
   }
 
   ngOnInit() {
@@ -110,7 +114,6 @@ export class HomePage implements OnInit {
       message: this.f['message']['value'],
     });
     this.f['message'].setValue('');
-
   }
 
   login() {
@@ -118,14 +121,12 @@ export class HomePage implements OnInit {
     if (!this.isUserActive) {
       this.chatService.userLoggedIn().subscribe({
         next: (res) => {
-          console.log(res);
-
-          this.rooms = [];
+          // this.rooms = [];
           this.isUserActive = true;
           // res.rooms.forEach((element) => {
           //   this.rooms.push(element.room);
           // });
-          this.getRoomsOption(res.rooms);
+          // this.getRoomsOption(res.rooms);
           // res.forEach(element => {
 
           // });
