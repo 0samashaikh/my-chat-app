@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 import { Room, User } from '../../home/home.page';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +12,11 @@ export class ChatService {
   private socket: Socket;
   private url = 'http://localhost:3000';
   constructor() {
-    this.socket = io();
+    this.socket = io(environment.server_url);
+    console.log(environment.server_url);
+    
   }
-
+  
   login(user: string) {
     this.socket.emit('login');
   }
